@@ -1,5 +1,5 @@
 class Bingeworthy::Genres 
-    attr_accessor :name, :id
+    attr_accessor :id, :name
 
     @@all = []
 
