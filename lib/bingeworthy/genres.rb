@@ -13,11 +13,4 @@ class Bingeworthy::Genres
         @@all 
     end
 
-    def find_show_by_genre(genre)
-        TV_Shows.find_all {|show| show.genre == self}
-        binding.pry
-    end
-
-
-
 end

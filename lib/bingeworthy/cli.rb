@@ -14,6 +14,8 @@ class Bingeworthy::CLI
         puts "Please select a show by number to view details."
 
         input = gets.strip
+        print_details(input.to_i)
+
     end
 
     def get_id(input)
@@ -26,13 +28,23 @@ class Bingeworthy::CLI
     end
 
     def print_details(input)
-
+      tv = @show[input-1]
+        puts "Name: #{tv.name}"
+        puts "Overview: #{tv.overview}"
+        puts ""
+        puts "Would you like to search for another show? Y/N"
     end
 
 
     def print_tv_shows
+        if @show.empty?
+            puts "There are no bingeworthy shows for this genre. Please select another option"
+            sleep(2)
+            start
+        else
         @show.each_with_index do |tv_show, index|
             puts "#{index+1}. #{tv_show.name}"
+        end
         end
     end
 
