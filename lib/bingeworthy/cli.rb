@@ -9,32 +9,50 @@ class Bingeworthy::CLI
     def start
         puts "Welcome! Sweatpants on and snacks ready?? Great! Let's binge some TV."
         puts ""
+        sleep(2)
         print_genres
         puts ""
         puts "Please select a genre by number to view all shows in that genre."
         input = gets.strip
 
-        #Need to find a way to ensure that user input is only integers 1-19 for genre selection and if not, it should return the user to start
-        get_id(input.to_i)
-
-        print_tv_shows
+        if valid?(input, @genres)
+         get_id(input.to_i)
+         print_tv_shows
+        else
+            puts "Sorry I didn't understand that."
+            sleep(5)
+            start
+        end
     
         puts "Please select a show by number to view details."
 
         input = gets.strip
-        print_details(input.to_i)
+        if valid?(input, @show)
+            print_details(input.to_i)
+        else
+            puts "Sorry I didn't understand that."
+            sleep(5)
+            start
+        end
 
         input = gets.strip.downcase
             if input == "y"
                 start
             elsif input == "n"
-                puts "Thank you. Have a nice day."
+                puts "Thank you. Happy binging!!"
                 exit
             else 
                 puts "Sorry, I didn't understand that."
                 start
             end
 
+    end
+
+    def valid?(input, array)
+        if input == "exit"
+            goodbye
+        end
+        input.to_i.between?(1, array.length)
     end
 
     def get_id(input)
@@ -49,6 +67,7 @@ class Bingeworthy::CLI
     def print_details(input)
       tv = @show[input-1]
         puts "Name: #{tv.name}"
+        puts ""
         puts "Overview: #{tv.overview}"
         puts ""
         puts "Would you like to find another show? Enter Y/N "
@@ -58,7 +77,7 @@ class Bingeworthy::CLI
     def print_tv_shows
         if @show.empty?
             puts "There are no bingeworthy shows for this genre. Please select another option"
-            sleep(2)
+            sleep(5)
             start
         else
             @show.each_with_index do |tv_show, index|
@@ -68,11 +87,15 @@ class Bingeworthy::CLI
     end
 
     def print_genres
-        Bingeworthy::Genres.all.each_with_index do |genre, index|
+       @genres = Bingeworthy::Genres.all.each_with_index do |genre, index|
             puts "#{index+1}. #{genre.name}"
         end
     end
     
+    def goodbye
+        puts "Thank you. Happy binging!!"
+        exit
+    end
 
 
  
