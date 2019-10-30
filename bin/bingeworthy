@@ -2,4 +2,4 @@
 
  require "./lib/environment"
 
-Bingeworthy::CLI.new.start
+Bingeworthy::CLI.new.call

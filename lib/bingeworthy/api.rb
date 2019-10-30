@@ -19,9 +19,9 @@ class Bingeworthy::API
         response = HTTParty.get(url)
         response["results"].each do |tv_show|
             name = tv_show["original_name"]
-            genre = tv_show["genre_ids"]
+            genre_id = tv_show["genre_ids"]
             overview = tv_show["overview"]
-            Bingeworthy::TV_Shows.new(name, genre, overview)
+            Bingeworthy::TV_Shows.new(name, genre_id, overview)
         end
     end
 

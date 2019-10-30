@@ -3,7 +3,7 @@ class Bingeworthy::Genres
 
     @@all = []
 
-    def initialize(name, id)
+    def initialize(id, name)
         @id = id
         @name = name
         @@all << self
@@ -12,6 +12,12 @@ class Bingeworthy::Genres
     def self.all
         @@all 
     end
+
+    def find_show_by_genre(genre)
+        TV_Shows.find_all {|show| show.genre == self}
+        binding.pry
+    end
+
 
 
 end

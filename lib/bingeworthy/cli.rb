@@ -2,26 +2,50 @@ class Bingeworthy::CLI
 
     def start
         puts "Welcome! Sweatpants on and snacks ready?? Great! Let's get started."
+        print_genres
         puts "Please select a genre by number to view all shows in that genre."
-        Bingeworthy::API.new.fetch_genre
+        input = gets.strip
+
+        get_id(input.to_i)
+       
+        print_tv_shows
+    
+    
+        puts "Please select a show by number to view details."
+
+        input = gets.strip
+    end
+
+    def get_id(input)
+       x = Bingeworthy::Genres.all[input-1]
+        get_tv_shows(x.id)
+    end
+
+    def get_tv_shows(genre_id)
+        @show = Bingeworthy::TV_Shows.all.select {|tv_show| tv_show.genre_id.include?(genre_id)}
+    end
+
+    def print_details(input)
+
+    end
+
+
+    def print_tv_shows
+        @show.each_with_index do |tv_show, index|
+            puts "#{index+1}. #{tv_show.name}"
+        end
+    end
+
+    def print_genres
         Bingeworthy::Genres.all.each_with_index do |genre, index|
-            puts "#{index+1}. #{genre.id}"
+            puts "#{index+1}. #{genre.name}"
         end
     end
     
     def call
         Bingeworthy::API.new.fetch_genre
-        Bingeworthy::Genres.all.each do |genre|
-            puts genre.id
-            puts genre.name
-        end
-
         Bingeworthy::API.new.fetch_tv_shows
-        Bingeworthy::TV_Shows.all.each do |tv_show|
-            puts tv_show.name
-            puts tv_show.genre
-            puts tv_show.overview
-        end
+        start
     end
 
  
