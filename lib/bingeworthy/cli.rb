@@ -9,8 +9,10 @@ class Bingeworthy::CLI
     def start
         puts "Welcome! Sweatpants on and snacks ready?? Great! Let's binge some TV."
         puts ""
-        sleep(2)
+        sleep(4)
+
         print_genres
+
         puts ""
         puts "Please select a genre by number to view all shows in that genre."
         input = gets.strip
@@ -20,7 +22,7 @@ class Bingeworthy::CLI
          print_tv_shows
         else
             puts "Sorry I didn't understand that."
-            sleep(5)
+            sleep(4)
             start
         end
     
@@ -31,7 +33,7 @@ class Bingeworthy::CLI
             print_details(input.to_i)
         else
             puts "Sorry I didn't understand that."
-            sleep(5)
+            sleep(4)
             start
         end
 
@@ -96,8 +98,5 @@ class Bingeworthy::CLI
         puts "Thank you. Happy binging!!"
         exit
     end
-
-
- 
 
 end
