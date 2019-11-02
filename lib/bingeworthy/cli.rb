@@ -27,8 +27,8 @@ class Bingeworthy::CLI
         end
     
         puts "Please select a show by number to view details."
-
         input = gets.strip
+        
         if valid?(input, @show)
             print_details(input.to_i)
         else

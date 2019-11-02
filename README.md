@@ -1,8 +1,6 @@
 # Bingeworthy
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/bingeworthy`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome! Bingeworthy is a simple program that allows the user to find something great to watch on television. The user can search through a list of genres to find what they're looking for, then see a list of shows for that genre. From there, they can access an overview of each show. Happy binging!
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To use the program, run 'bin/bingeworthy' to get started. From there, follow the prompts in the CLI. To exit the program at any time, simply type 'exit'. 
 
 ## Development
 
