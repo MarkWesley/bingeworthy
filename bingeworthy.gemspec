@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["markwstone85@gmail.com"]
 
   spec.summary       = %q{Allows the user to find a program to watch on TV}
-  spec.description   = %q{This program allows the user to search through a list of television genres to find all shows within that genre. From there the user can find details for any particular show in that genre.}
+  spec.description   = %q{Allows the user to find a program to watch on TV}
   spec.homepage      = "http://bingeworthy.com"
   spec.license       = "MIT"
 
