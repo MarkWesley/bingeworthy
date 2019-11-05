@@ -5,7 +5,7 @@ class Bingeworthy::API
     end
 
     def fetch_genre
-        url = 'https://api.themoviedb.org/3/genre/movie/list?language=en-US&api_key=82879be7a61e78643d9c4e8ac32335ea'
+        url = "https://api.themoviedb.org/3/genre/movie/list?language=en-US&api_key=#{@key}"
         response = HTTParty.get(url)
         response["genres"].each do |genre|
             id = genre["id"] 
@@ -15,7 +15,7 @@ class Bingeworthy::API
     end
 
     def fetch_tv_shows
-        url = 'https://api.themoviedb.org/3/tv/popular?page=1&language=en-US&api_key=82879be7a61e78643d9c4e8ac32335ea'
+        url = "https://api.themoviedb.org/3/tv/popular?page=1&language=en-US&api_key=#{@key}"
         response = HTTParty.get(url)
         response["results"].each do |tv_show|
             name = tv_show["original_name"]

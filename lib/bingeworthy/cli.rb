@@ -22,19 +22,18 @@ class Bingeworthy::CLI
          print_tv_shows
         else
             puts "Sorry I didn't understand that."
-            sleep(4)
             start
         end
     
         puts "Please select a show by number to view details."
         input = gets.strip
-        
+
         if valid?(input, @show)
             print_details(input.to_i)
         else
-            puts "Sorry I didn't understand that."
-            sleep(4)
-            start
+            puts "Sorry I didn't understand that. Please select another option."
+            input = gets.strip
+            print_details (input.to_i)
         end
 
         input = gets.strip.downcase
