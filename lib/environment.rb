@@ -3,6 +3,7 @@ require_relative "./Bingeworthy/cli"
 require_relative "./Bingeworthy/api"
 require_relative "./Bingeworthy/genres"
 require_relative "./Bingeworthy/tv_shows"
+require_relative "./Bingeworthy/tv_genres"
 require 'pry'
 require "httparty"
 

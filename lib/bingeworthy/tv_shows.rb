@@ -1,17 +1,29 @@
 class Bingeworthy::TV_Shows
-    attr_accessor :name, :genre_id, :overview
+    attr_accessor :name, :overview
+    attr_reader :genres
 
     @@all = []
 
-    def initialize(name, genre_id, overview)
+    def initialize(name, overview)
         @name = name
-        @genre_id = genre_id
         @overview = overview
         @@all << self
     end
 
     def self.all 
         @@all
+    end
+
+    def new_tv_genre(genre)
+        TV_Genres.new(genre, self)
+    end
+
+    def tv_genres 
+        TV_Genres.all.select {|tv| tv.tv_show == self}
+    end
+
+    def genres 
+        @genres = tv_genres.map {|tv| tv.genre}
     end
 
 
