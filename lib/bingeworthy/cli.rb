@@ -18,7 +18,7 @@ class Bingeworthy::CLI
         input = gets.strip
 
         if valid?(input, Bingeworthy::Genres.all)
-         get_tv_shows(input.to_i)
+            get_tv_shows(input.to_i)
         else
             puts "Sorry I didn't understand that."
             start
@@ -27,7 +27,7 @@ class Bingeworthy::CLI
         puts "Please select a show by number to view details."
         input = gets.strip
 
-        if valid?(input, @show)
+        if valid?(input, @shows)
             print_details(input.to_i)
         else 
             puts "Sorry I didn't understand that. Please select another option."
@@ -57,28 +57,29 @@ class Bingeworthy::CLI
 
     def get_tv_shows(input)
        x = Bingeworthy::Genres.all[input-1]
-        if x.tv_shows.empty?
+       @shows = x.tv_shows
+        if @shows.empty?
             puts "There are no bingeworthy shows for this genre. Please select another option"
              sleep(4)
              start
         else
-            x.tv_shows.each_with_index do |tv_show, index|
-             puts "#{index+1}. #{tv_show.name}"
+           @shows.each_with_index do |tv_show, index|
+            puts "#{index+1}. #{tv_show.name}"
          end
        end
     end
 
-    # def print_details(input)
-    #     tv = @show[input-1]
-    #     puts "Name: #{tv.name}"
-    #     puts ""
-    #     puts "Overview: #{tv.overview}"
-    #     puts ""
-    #     puts "Would you like to find another show? Enter Y/N "
-    #  end
+    def print_details(input)
+        tv = @shows[input-1]
+        puts "Name: #{tv.name}"
+        puts ""
+        puts "Overview: #{tv.overview}"
+        puts ""
+        puts "Would you like to find another show? Enter Y/N "
+     end
 
-    def print_genres
-       Bingeworthy::Genres.all.each_with_index do |genre, index|
+    def print_genres 
+        Bingeworthy::Genres.all.each_with_index do |genre, index|
             puts "#{index+1}. #{genre.name}"
         end
     end

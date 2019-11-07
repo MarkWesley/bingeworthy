@@ -1,6 +1,5 @@
 class Bingeworthy::TV_Shows
     attr_accessor :name, :overview
-    attr_reader :genres
 
     @@all = []
 
@@ -23,7 +22,7 @@ class Bingeworthy::TV_Shows
     end
 
     def genres 
-        @genres = tv_genres.map {|tv| tv.genre}
+        tv_genres.map {|tv| tv.genre}
     end
 
 
